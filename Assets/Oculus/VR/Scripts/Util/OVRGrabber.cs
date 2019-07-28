@@ -147,7 +147,6 @@ public class OVRGrabber : MonoBehaviour
 		float prevFlex = m_prevFlex;
 		// Update values from inputs
 		m_prevFlex = OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, m_controller);
-
 		CheckForGrabOrRelease(prevFlex);
     }
 
@@ -201,6 +200,15 @@ public class OVRGrabber : MonoBehaviour
             GrabBegin();
         }
         else if ((m_prevFlex <= grabEnd) && (prevFlex > grabEnd))
+        {
+            GrabEnd();
+        }
+        //oculus go mapped to primary index trigger
+        else if(OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger))
+        {
+            GrabBegin();
+        }
+        else if (OVRInput.GetUp(OVRInput.Button.PrimaryIndexTrigger))
         {
             GrabEnd();
         }
