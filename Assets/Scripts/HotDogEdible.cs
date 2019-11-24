@@ -11,15 +11,7 @@ public class HotDogEdible : Edible
     {
         bitesRemaining = totalNumberOfBites;
     }
-#if UNITY_EDITOR
-    private void Update()
-    {
-        if(Input.GetMouseButtonDown(0))
-        {
-            Bite();
-        }
-    }
-#endif
+
     public override void Bite()
     {
         --bitesRemaining;
